@@ -1,13 +1,44 @@
 # Escolhe um sanduíche automáticamente
 
+import os
 from random import choice, randint
 
-listaPaes = ['3 Queijos', 'Parmesão e orégano', '9 grãos', 'Italiano Branco']
+listaPaes = ['3 Queijos', 'Parmesão E orégano', '9 grãos', 'Italiano Branco']
 listaQueijos = ['Cheddar', 'Suíço', 'Queijo Mussarela Ralada']
 listaVegetais = ['Azeitonas', 'Picles', 'Pepinos', 'Pimentão', 'Alface',
                  'Cebola Roxa', 'Tomate', 'Rúcula', 'Cenoura Ralada', 'Vinagrete']
 listaMolhos = ['Cebola Agridoce', 'Chipotle', 'Barbecue', 'Parmesão',
-               'Maionese Temperada', 'Mostarda e Mel', 'Supreme']
+               'Maionese Temperada', 'Mostarda E Mel', 'Supreme']
+
+todasAsLista = listaPaes + listaQueijos + listaVegetais + listaMolhos
+
+
+def remove_ingredientes():
+    print(todasAsLista, '\n')
+    continuar = str(input("Deseja remover algum item? (S/N)"))
+    itensRemover = ''
+
+    if (continuar == 'S'):
+        while continuar == 'S':
+            itensRemover = str(input('Escolha 1 ingrediente para remover:'))
+            contido = itensRemover in todasAsLista
+
+            if contido:
+                todasAsLista.remove(itensRemover)
+            else:
+                print("Este item não existe na lista")
+
+            os.system("cls")
+            print(todasAsLista)
+            continuar = str(input('Deseja remover mais um? (S/N)'))
+
+            if continuar == 'N':
+                break
+
+        return os.system("cls")
+
+    else:
+        return os.system("cls")
 
 
 def escolhe_pao():
@@ -52,4 +83,5 @@ def monta_sanduba():
     escolhe_molhos()
 
 
+remove_ingredientes()
 monta_sanduba()
