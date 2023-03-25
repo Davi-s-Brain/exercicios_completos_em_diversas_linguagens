@@ -6,9 +6,11 @@ from random import choice, randint
 listaPaes = ['3 Queijos', 'Parmesão E orégano', '9 grãos', 'Italiano Branco']
 listaQueijos = ['Cheddar', 'Suíço', 'Queijo Mussarela Ralada']
 listaVegetais = ['Azeitonas', 'Picles', 'Pepinos', 'Pimentão', 'Alface',
-                 'Cebola Roxa', 'Tomate', 'Rúcula', 'Cenoura Ralada', 'Vinagrete']
+                 'Cebola Roxa', 'Tomate', 'Rúcula']
 listaMolhos = ['Cebola Agridoce', 'Chipotle', 'Barbecue', 'Parmesão',
                'Maionese Temperada', 'Mostarda E Mel', 'Supreme']
+
+# Escolher a quantidade que quer no molho, ou deixar padrão
 
 todasAsLista = listaPaes + listaQueijos + listaVegetais + listaMolhos
 
@@ -52,13 +54,24 @@ def escolhe_queijo():
 
 
 def escolhe_vegetais():
-    i = randint(2, 4)
     vegetais = []
-    for n in range(i):
-        escolhido = choice(listaVegetais)
-        index_lista = listaVegetais.index(escolhido)
-        vegetais.append(escolhido)
-        listaVegetais.pop(index_lista)
+
+    seletorVegetias = str(
+        input("Deseja escolher a quantidade de vegetais? (S/N) "))
+    if seletorVegetias == 'S':
+        quantidadeVegetais = int(input("Quantos vegetais você deseja? (1/4) "))
+        for _ in range(quantidadeVegetais):
+            escolhido = choice(listaVegetais)
+            index_lista = listaVegetais.index(escolhido)
+            vegetais.append(escolhido)
+            listaVegetais.pop(index_lista)
+    else:
+        i = randint(2, 4)
+        for _ in range(i):
+            escolhido = choice(listaVegetais)
+            index_lista = listaVegetais.index(escolhido)
+            vegetais.append(escolhido)
+            listaVegetais.pop(index_lista)
 
     return print(vegetais)
 
@@ -66,7 +79,7 @@ def escolhe_vegetais():
 def escolhe_molhos():
     i = randint(2, 3)
     molho = []
-    for n in range(i):
+    for _ in range(i):
         escolhido = choice(listaMolhos)
         index_lista = listaMolhos.index(escolhido)
         molho.append(escolhido)
