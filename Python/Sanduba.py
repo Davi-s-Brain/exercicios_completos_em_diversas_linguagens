@@ -31,16 +31,17 @@ def remove_ingredientes():
                 print("Este item não existe na lista")
 
             os.system("cls")
+            os.system("clear")
             print(todasAsLista)
             continuar = str(input('Deseja remover mais um? (S/N)'))
 
             if continuar == 'N':
                 break
 
-        return os.system("cls")
+        return (os.system("cls"), os.system("clear"))
 
     else:
-        return os.system("cls")
+        return (os.system("cls"), os.system("clear"))
 
 
 def escolhe_pao():
